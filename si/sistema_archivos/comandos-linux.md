@@ -217,7 +217,9 @@ useradd –m alumno1
 | **-s** shell          | Trayectoria absoluta del shell de conexión.                                                                                                                                                      |
 ## usermod (Modificar usuario)
 ```bash
-usermod [opciones] nombre_usuario
+sudo usermod [opciones] nombre_usuario
+
+sudo usermod -aG nuevo_grupo nuevo_usuario (Añadir usuario a grupo)
 ```
 
 | Tipo                  | Uso                                                                                                                                                            |
@@ -233,6 +235,7 @@ usermod [opciones] nombre_usuario
 | **-e**                | Fecha en la que acaba la validez de la cuenta de usuario.                                                                                                      |
 | **-L**                | Bloqueo de la cuenta de usuario.                                                                                                                               |
 | **-U**                | Desbloqueo de la cuenta de usuario.                                                                                                                            |
+| **-aG**               | Añade el usuario al grupo sin eliminarlo de sus grupos actuales.                                                                                               |
 ## userdel (Quitar usuario)
 Quita la cuenta del usuario pero no borra su directorio ni sus objetos en propiedad:
 ```bash
@@ -332,3 +335,23 @@ Se utiliza para permitir a los usuarios ejecutar comandos con privilegios de otr
 sudo ...
 ```
 Se utiliza poniendo ***sudo*** delante del comando que vayamos a ejecutar.
+### Cambiar propietario (chown)
+Se utiliza para cambiar el propietario:
+```bash
+chown [opciones] nuevo_propietario[:nuevo_grupo] archivo(s)
+```
+- `nuevo_propietario`: Especifica el nuevo propietario del archivo o directorio.
+- `nuevo_grupo` (opcional): Especifica el nuevo grupo del archivo o directorio. Si no se proporciona, el grupo no se modifica.
+- `archivo(s)`: Especifica los archivos o directorios a los que se aplicará el cambio de propietario/grupo. Pueden ser uno o más archivos o directorios.
+1. Cambiar propietario de un archivo.
+```bash
+chown nuevo_propietario archivo
+
+chown usuario1 archivo.txt
+```
+2. Cambiar el propietario y el grupo de un archivo.
+```bash
+chown nuevo_propietario:nuevo_grupo archivo
+
+chown usuario1:grupo1 archivo.txt
+```
