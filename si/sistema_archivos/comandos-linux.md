@@ -301,6 +301,51 @@ Permite al administrador pasar a trabajar como tal, aunque en principio se haya 
 su
 ```
 
+# Unidad 8: Gestión de procesos
+
+1. `ps`: Muestra los procesos que están ejecutándose en este momento. El primer valor que aparece es el identificador de proceso (PID).
+2. `ps -e`: Muestra todos los procesos que están corriendo en tu máquina.
+3. `ps aux`: Muestra más información sobre los procesos en ejecución, incluyendo quién inició cada uno de los procesos en tu máquina.
+4. `top`: Muestra información en tiempo real sobre los procesos. La información sobre el sistema se refresca cada pocos segundos.
+5. `top -u usuario`: Muestra los procesos que pertenecen a un usuario específico.
+6. `/proc`: Directorio que contiene información sobre los procesos en ejecución. Se puede acceder para obtener información. (Para acceder a su contenido se usa `ls /proc`)
+7. `yes`: Comando que imprime una cadena de texto infinitamente. **(IMPORTANTE)**
+8. `/dev/null`: Fichero especial que descarta toda la información escrita en él.
+9. `yes adeus > /dev/null` para redirigir la salida de un comando a `/dev/null`. (Debido al >)
+10. `&`: Símbolo que permite ejecutar un programa en segundo plano.
+112. `yes que tal > /dev/null &` para ejecutar un comando en segundo plano. (Debido al  &)
+12. `Ctrl + C`: Atajo de teclado que termina (o mata) una tarea.
+13. `Ctrl + Z`: Atajo de teclado que detiene una tarea.
+14. `kill -s PID` se utiliza para enviar una señal (kill) a un proceso. **(IMPORTANTE)**
+	1. En ***-s*** se pondría un número, por ejemplo: **kill -9 4321**
+	2. Entre las opciones de kill se encuentran las siguientes:
+		- `SIGTERM (15)`: Esta es la señal por defecto que se envía si no se especifica ninguna señal. Le pide al proceso que se cierre de manera ordenada.
+		- `SIGKILL (9)`: Esta señal obliga al proceso a cerrarse inmediatamente.
+		- `SIGSTOP (17,19,23)`: Esta señal detiene el proceso.
+		- `SIGCONT (18,20,24)`: Esta señal hace que el proceso continúe si estaba detenido.
+	3. Se reemplaza **PID** por el ID del proceso.
+15. `jobs`: Comando que muestra las tareas que se están ejecutando desde tu terminal.
+16. `pstree`: Comando que muestra la jerarquía de procesos en tu máquina.
+17. `fg` y `bg`: Comandos que permiten traer tareas a primer plano o mandarlas a segundo plano.
+18. `cron`: Programa que permite programar tareas para que se ejecuten de forma planificada.
+	- Así se ve una entrada del comando `crontab -e`
+		```bash
+		
+		* * * * * /ruta/al/script.sh
+		
+		```
+	- Cada asterisco representa una unidad de tiempo, en el siguiente orden:
+		1. **Minuto (0 - 59)**
+		2. **Hora (0 - 23)**
+		3. **Día del mes (1 - 31)**
+		4. **Mes (1 - 12)**
+		5. **Día de la semana (0 - 7)** (Tanto 0 como 7 son domingo)
+	- Un ejemplo real sería:
+		```bash
+		0 17 * * * /ruta/al/script.sh
+		```
+		Esto significa que el script se ejecutará a las 17:00 horas todos los días.
+1. `sudo nano /etc/crontab` se utiliza para editar el archivo de configuración de cron.
 # Comandos de consola útiles
 ### Documentación (man)
 Muestra información sobre un comando en concreto.
