@@ -301,6 +301,15 @@ Permite al administrador pasar a trabajar como tal, aunque en principio se haya 
 su
 ```
 
+## Árbol Genealógico 
+Primero, encuentra el PID del proceso `Xorg`:
+```bash
+pid=$(pgrep -x Xorg)
+```
+Tras eso se crea el árbol:
+```bash
+pstree -s -p $pid
+```
 # Unidad 8: Gestión de procesos
 
 1. `ps`: Muestra los procesos que están ejecutándose en este momento. El primer valor que aparece es el identificador de proceso (PID).
